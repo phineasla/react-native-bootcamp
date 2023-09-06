@@ -13,4 +13,5 @@ export interface Weather {
   humidity: number;
   pressure: number;
   windSpeed: number;
+  timestamp: number;
 }
