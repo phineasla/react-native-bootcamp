@@ -3,9 +3,16 @@ import {BaseService} from '../baseService';
 import Config from '../../config';
 import {ServiceResponse} from '../baseService.type';
 import {Weather} from '../../models/Weather';
-import {parseGetWeatherResponse} from './weatherService.utils';
+import {
+  parseGetForecastResponse,
+  parseGetWeatherResponse,
+} from './weatherService.utils';
 import {GetWeatherRequestParams, GetWeatherResponse} from './getWeather.type';
-import {GetForecastRequestParams} from './getForecast.type';
+import {
+  GetForecastRequestParams,
+  GetForecastResponse,
+} from './getForecast.type';
+import {Forecast} from '../../models/Forecast';
 
 class WeatherService extends BaseService {
   async getWeather(
@@ -34,8 +41,8 @@ class WeatherService extends BaseService {
 
   async getForecast(
     params: GetForecastRequestParams,
-  ): Promise<ServiceResponse<Weather>> {
-    const response: ApiResponse<GetWeatherResponse> = await this.apisauce.get(
+  ): Promise<ServiceResponse<Forecast>> {
+    const response: ApiResponse<GetForecastResponse> = await this.apisauce.get(
       '/weather',
       {appid: Config.API_KEY, q: params.city},
     );
@@ -47,8 +54,8 @@ class WeatherService extends BaseService {
         status: response.status,
       };
     }
-    const rawData = response.data as GetWeatherResponse;
-    const data: Weather = parseGetWeatherResponse(rawData);
+    const rawData = response.data as GetForecastResponse;
+    const data: Forecast = parseGetForecastResponse(rawData);
     return {
       ok: true,
       data,

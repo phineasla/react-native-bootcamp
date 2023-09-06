@@ -125,3 +125,22 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# IDEA / Android Studio
+*.iml
+.gradle
+.idea
+
+# Android
+*.apk
+*.hprof
+/android/**/build
+/android/**/.cxx
+/android/**/local.properties
+/android/captures
+/android/expoview/libs/ReactAndroid-temp
+/android/versioned-react-native/packages
+/android/versioned-react-native/ReactAndroid
+ReactAndroid-temp.aar
+/android/prebuiltHermes
+/android/versioned-abis/**/*.aar
