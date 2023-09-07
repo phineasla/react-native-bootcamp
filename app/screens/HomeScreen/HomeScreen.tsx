@@ -2,10 +2,12 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {AppNavigatorParamList} from '../../navigators/AppNavigator';
 import {NAVID_HOME_SCREEN} from '../../constants/navigation';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
 import {weatherService} from '../../services/weather/weatherService';
 import {Search, SearchProps} from './components/Search';
 import {Forecast} from '../../models/Forecast';
+import {WeatherItem} from './components/WeatherItems';
+import {Weather} from '../../models/Weather';
 
 export type HomeScreenParams = undefined;
 
@@ -25,20 +27,28 @@ export const HomeScreen = (props: HomeScreenProps) => {
     [setCity],
   );
 
+  const renderItem: ListRenderItem<Weather> = useCallback(
+    info => <WeatherItem data={info.item} />,
+    [],
+  );
+
   useEffect(() => {
-    weatherService.getForecast({city}).then(response => {
-      if (!response.ok) {
-        // Mr.Stark, I don't feel so good
-        return console.warn(response);
-      }
-      setForecast(response.data);
-    });
+    weatherService
+      .getForecast({city})
+      .then(response => {
+        if (!response.ok) {
+          // Mr.Stark, I don't feel so good
+          return console.warn(response);
+        }
+        setForecast(response.data);
+      })
+      .catch(console.error);
   }, [city]);
 
   return (
     <View style={styles.container}>
       <Search defaultValue={city} onSubmit={onSearchSubmit} />
-      <FlatList />
+      <FlatList data={forecast?.list} renderItem={renderItem} />
     </View>
   );
 };

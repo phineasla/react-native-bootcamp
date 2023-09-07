@@ -25,6 +25,7 @@ export const Search = (props: SearchProps) => {
   return (
     <View style={styles.container}>
       <TextInput
+        defaultValue={props.defaultValue}
         onChangeText={onChangeText}
         onSubmitEditing={onSubmit}
         placeholder="Find your city..."
