@@ -6,3 +6,7 @@ export function getWeatherIconUrl(iconId: string, scale = '2x') {
   }
   return `${Config.API_ICON_URL}${iconId}.png`;
 }
+
+export function kelvinToCelcius(value: number) {
+  return ((value - 273.15) * 9) / 5 + 32;
+}

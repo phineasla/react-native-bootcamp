@@ -44,7 +44,7 @@ class WeatherService extends BaseService {
   ): Promise<ServiceResponse<Forecast>> {
     const response: ApiResponse<GetForecastResponse> = await this.apisauce.get(
       '/forecast',
-      {appid: Config.API_KEY, q: params.city},
+      {appid: Config.API_KEY, q: params.city, units: params.units ?? 'metric'},
     );
     if (!response.ok) {
       return {

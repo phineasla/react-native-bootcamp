@@ -1,5 +1,6 @@
 export interface GetForecastRequestParams {
   city: string;
+  units?: 'metric' | 'imperial';
 }
 
 interface Clouds {

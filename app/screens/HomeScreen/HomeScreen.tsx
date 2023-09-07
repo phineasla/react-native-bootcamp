@@ -8,6 +8,8 @@ import {Search, SearchProps} from './components/Search';
 import {Forecast} from '../../models/Forecast';
 import {WeatherItem} from './components/WeatherItems';
 import {Weather} from '../../models/Weather';
+import {SAFE_SPACING} from '../../constants/style';
+import {HSpacer} from '../../components/Spacer';
 
 export type HomeScreenParams = undefined;
 
@@ -17,6 +19,8 @@ type HomeScreenProps = NativeStackScreenProps<
 >;
 
 const DEFAULT_LOCATION = 'ho chi minh';
+
+const Spacer = () => <HSpacer height={6} />;
 
 export const HomeScreen = (props: HomeScreenProps) => {
   const [city, setCity] = useState(DEFAULT_LOCATION);
@@ -48,7 +52,12 @@ export const HomeScreen = (props: HomeScreenProps) => {
   return (
     <View style={styles.container}>
       <Search defaultValue={city} onSubmit={onSearchSubmit} />
-      <FlatList data={forecast?.list} renderItem={renderItem} />
+      <FlatList
+        data={forecast?.list}
+        renderItem={renderItem}
+        style={styles.flatList}
+        ItemSeparatorComponent={Spacer}
+      />
     </View>
   );
 };
@@ -58,5 +67,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+  },
+  flatList: {
+    marginTop: 8,
+    marginHorizontal: SAFE_SPACING,
   },
 });
