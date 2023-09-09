@@ -5,6 +5,7 @@ import {Weather} from '../../../models/Weather';
 import {getWeatherIconUrl} from '../../../utils/weather.utils';
 import FastImage from 'react-native-fast-image';
 import {getDayAndMonth, getTime} from '../../../utils/date.utils';
+import {images} from '../../../assets/images';
 
 export type WeatherItemProps = {
   data: Weather;
@@ -12,6 +13,9 @@ export type WeatherItemProps = {
 
 export const WeatherItem = ({data}: WeatherItemProps) => {
   const date = new Date(data.timestamp * 1000);
+  const localIcon =
+    images.weather[data.icon as keyof typeof images.weather] ??
+    images.weather.default;
   return (
     <HStack space={3} style={styles.container}>
       <VStack style={styles.dateContainer}>
@@ -23,8 +27,8 @@ export const WeatherItem = ({data}: WeatherItemProps) => {
       <View style={styles.imageContainer}>
         <View style={styles.imageBackground} />
         <FastImage
-          source={{uri: getWeatherIconUrl(data.icon)}}
-          // source={images['10n']}
+          // source={{uri: getWeatherIconUrl(data.icon)}}
+          source={localIcon}
           style={styles.image}
           resizeMode="contain"
         />

@@ -18,5 +18,6 @@ export const images = {
     '13n': require('./weather/13n.png'),
     '50d': require('./weather/50d.png'),
     '50n': require('./weather/50n.png'),
+    default: require('./weather/default.png'),
   },
 };
