@@ -1,0 +1,22 @@
+export const images = {
+  weather: {
+    '01d': require('./weather/01d.png'),
+    '01n': require('./weather/01n.png'),
+    '02d': require('./weather/02d.png'),
+    '02n': require('./weather/02n.png'),
+    '03d': require('./weather/03d.png'),
+    '03n': require('./weather/03n.png'),
+    '04d': require('./weather/04d.png'),
+    '04n': require('./weather/04n.png'),
+    '09d': require('./weather/09d.png'),
+    '09n': require('./weather/09n.png'),
+    '10d': require('./weather/10d.png'),
+    '10n': require('./weather/10n.png'),
+    '11d': require('./weather/11d.png'),
+    '11n': require('./weather/11n.png'),
+    '13d': require('./weather/13d.png'),
+    '13n': require('./weather/13n.png'),
+    '50d': require('./weather/50d.png'),
+    '50n': require('./weather/50n.png'),
+  },
+};
