@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Button,
   StyleSheet,
@@ -14,12 +14,11 @@ export type SearchProps = {
 };
 
 export const Search = (props: SearchProps) => {
-  const [query, setQuery] = useState(props.defaultValue ?? '');
-
-  const onChangeText: TextInputProps['onChangeText'] = text => setQuery(text);
+  const onChangeText: TextInputProps['onChangeText'] = text =>
+    console.log('Text changed:', text);
 
   const onSubmit = () => {
-    props.onSubmit(query);
+    props.onSubmit('Input field value');
   };
 
   return (
