@@ -2,8 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {HStack, VStack} from '../../../components/Stack';
 import {Weather} from '../../../models/Weather';
-import {getWeatherIconUrl, kelvinToCelcius} from '../../../utils/weather.utils';
-import {images} from '../../../assets/images';
+import {getWeatherIconUrl} from '../../../utils/weather.utils';
 import FastImage from 'react-native-fast-image';
 import {getDayAndMonth, getTime} from '../../../utils/date.utils';
 
