@@ -27,6 +27,7 @@ export const WeatherItem = ({data}: WeatherItemProps) => {
       <View style={styles.imageContainer}>
         <View style={styles.imageBackground} />
         <FastImage
+          // https://github.com/DylanVann/react-native-fast-image/issues/710
           // source={{uri: getWeatherIconUrl(data.icon)}}
           source={localIcon}
           style={styles.image}

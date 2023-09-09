@@ -11,11 +11,9 @@ function App(): JSX.Element {
   const isDark = useColorScheme() === 'dark';
 
   return (
-    <>
-      <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
-        <AppNavigator />
-      </NavigationContainer>
-    </>
+    <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
 

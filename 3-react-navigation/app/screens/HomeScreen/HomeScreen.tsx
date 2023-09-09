@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {AppNavigatorParamList} from '../../navigators/AppNavigator';
 import {NAVID_HOME_SCREEN} from '../../constants/navigation';
-import {FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
+import {FlatList, ListRenderItem, StyleSheet, Text, View} from 'react-native';
 import {weatherService} from '../../services/weather/weatherService';
 import {Search, SearchProps} from './components/Search';
 import {Forecast} from '../../models/Forecast';
@@ -56,6 +56,9 @@ export const HomeScreen = (props: HomeScreenProps) => {
         data={forecast?.list}
         renderItem={renderItem}
         style={styles.flatList}
+        ListHeaderComponent={
+          <Text style={styles.header}>{forecast?.city.name}</Text>
+        }
         ItemSeparatorComponent={Spacer}
       />
     </View>
@@ -71,5 +74,9 @@ const styles = StyleSheet.create({
   flatList: {
     marginTop: 8,
     marginHorizontal: SAFE_SPACING,
+  },
+  header: {
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });

@@ -1,8 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {AppNavigatorParamList} from '../../navigators/AppNavigator';
-import {NAVID_HOME_SCREEN} from '../../constants/navigation';
-import {FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
+import {FlatList, ListRenderItem, StyleSheet, Text, View} from 'react-native';
 import {weatherService} from '../../services/weather/weatherService';
 import {Search, SearchProps} from './components/Search';
 import {Forecast} from '../../models/Forecast';
@@ -11,18 +8,11 @@ import {Weather} from '../../models/Weather';
 import {SAFE_SPACING} from '../../constants/style';
 import {HSpacer} from '../../components/Spacer';
 
-export type HomeScreenParams = undefined;
-
-type HomeScreenProps = NativeStackScreenProps<
-  AppNavigatorParamList,
-  typeof NAVID_HOME_SCREEN
->;
-
 const DEFAULT_LOCATION = 'ho chi minh';
 
 const Spacer = () => <HSpacer height={6} />;
 
-export const HomeScreen = (props: HomeScreenProps) => {
+export const HomeScreen = () => {
   const [city, setCity] = useState(DEFAULT_LOCATION);
   const [forecast, setForecast] = useState<Forecast>();
 
@@ -56,6 +46,9 @@ export const HomeScreen = (props: HomeScreenProps) => {
         data={forecast?.list}
         renderItem={renderItem}
         style={styles.flatList}
+        ListHeaderComponent={
+          <Text style={styles.header}>{forecast?.city.name}</Text>
+        }
         ItemSeparatorComponent={Spacer}
       />
     </View>
@@ -71,5 +64,9 @@ const styles = StyleSheet.create({
   flatList: {
     marginTop: 8,
     marginHorizontal: SAFE_SPACING,
+  },
+  header: {
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });

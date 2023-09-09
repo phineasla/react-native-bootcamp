@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
+import {FlatList, ListRenderItem, StyleSheet, Text, View} from 'react-native';
 import {Search, SearchProps} from './components/Search';
 import {Forecast, forecastMock} from '../../models/Forecast';
 import {WeatherItem} from './components/WeatherItems';
@@ -29,6 +29,9 @@ export const HomeScreen = () => {
         data={forecast?.list}
         renderItem={renderItem}
         style={styles.flatList}
+        ListHeaderComponent={
+          <Text style={styles.header}>{forecast?.city.name}</Text>
+        }
         ItemSeparatorComponent={Spacer}
       />
     </View>
@@ -44,5 +47,9 @@ const styles = StyleSheet.create({
   flatList: {
     marginTop: 8,
     marginHorizontal: SAFE_SPACING,
+  },
+  header: {
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });
