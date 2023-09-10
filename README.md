@@ -1,5 +1,7 @@
 # React Native bootcamp - What's the weather today
 
+This bootcamp is designed for those who are new to mobile development and want to learn how to build applications using React Native. While this bootcamp won’t delve too deeply into React Native or provide a solid foundation, it will give you a taste of what mobile development entails and inspire you to explore further on your own.
+
 ## Prerequisite
 
 - Know TypeScript
