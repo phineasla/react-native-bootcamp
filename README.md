@@ -5,10 +5,21 @@
 - Know TypeScript
 - Setup NodeJS and Yarn
 
+## Getting started
+
+1. Completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup?guide=native&platform=android&package-manager=yarn) instructions till "Creating a new application" step, before proceeding.
+1. Create a new application using
+
+```bash
+npx react-native init YourProjectName --template react-native-template-typescript
+```
+
+From RN v0.71, you can omit `--template react-native-template-typescript`
+
 ## Tech stack
 
 | Library                 | Category           | Version | Description                                    |
-|-------------------------|--------------------|---------|------------------------------------------------|
+| ----------------------- | ------------------ | ------- | ---------------------------------------------- |
 | React Native            | Mobile Framework   | v0.72   |                                                |
 | React                   | UI Framework       | v18     |                                                |
 | TypeScript              | Language           | v4      |                                                |
