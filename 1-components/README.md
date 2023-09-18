@@ -92,10 +92,12 @@ Children components don't inherit styles from parent nor ancestor components. Th
 
 ## Exercise
 
-React Native button has limited customization capabilities, build your own button using [Pressable](https://reactnative.dev/docs/pressable). Hint:
+1. Create `Forecast` component to show [`forecastMock`](./app/models/Forecast.ts) data. Example: ![Forecast component](./docs/Forecast-component.png)
+
+1. React Native button has limited customization capabilities, build your own button using [Pressable](https://reactnative.dev/docs/pressable). Hint:
 
 - It should inherit props from `Pressable` such as `onPress`, `hitSlop`,...
-- `Pressable` doesn't have animation to indicate if it is pressed like `TouchableOpacity`, but `style` and `children` props can accept a function that return styles base on the current state
+- `Pressable` doesn't have animation to indicate if it is pressed like `TouchableOpacity`, but `style` and `children` props can accept a function that return styles base on the current state. Add background color or opacity to indicate that the button is pressed.
 
   ```tsx
   <Pressable

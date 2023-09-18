@@ -14,7 +14,7 @@ import {
 } from './getForecast.type';
 import {Forecast} from '../../models/Forecast';
 
-class WeatherService extends BaseService {
+export class WeatherService extends BaseService {
   async getWeather(
     params: GetWeatherRequestParams,
   ): Promise<ServiceResponse<Weather>> {
