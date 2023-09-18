@@ -52,9 +52,7 @@ function CustomTheme() {
 }
 ```
 
-Reference:
-
-- [Rules of Hooks](https://react.dev/warnings/invalid-hook-call-warning)
+Reference: [Rules of Hooks](https://react.dev/warnings/invalid-hook-call-warning)
 
 ## useState
 
@@ -126,6 +124,37 @@ function Good() {
   );
 }
 ```
+
+## useEffect
+
+### Add useState dependency to prevent infinite loop
+
+By default `useEffect` will always run after render. Setting the state causes re-render which means we get an infinite loop: (1) useEffect --> (2) setting state --> (3) render --> (1) --> (2) --> ...
+
+```tsx
+function Bad() {
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    // ...
+    setUserInfo({name: 'Allen Du'});
+  });
+  return <Text>Name {userInfo.name}</Text>;
+}
+
+function Good() {
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    // ...
+    setUserInfo({name: 'Allen Du'});
+    // ✅ Good: add useState dependency
+  }, [userInfo]);
+  return <Text>Name {userInfo.name}</Text>;
+}
+```
+
+### Be careful with non-primitive dependencies
+
+Array and object are compare by reference, therefore, you should check if non-primitive dependencies get recreated in each render
 
 ## Exercise
 
